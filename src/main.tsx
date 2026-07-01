@@ -56,19 +56,27 @@ function Hero() {
           <a className="btn text" href={`mailto:${profile.email}`}>Email</a>
         </div>
       </div>
-      <aside className="hero-card">
-        <span className="status-dot">Open to Fall Internships</span>
-        <h3>Target Roles</h3>
-        <div className="tag-list">
-          {profile.targetRoles.map((role) => <span key={role}>{role}</span>)}
-        </div>
-        <div className="metric-grid">
-          <div><strong>500+</strong><small>students supported</small></div>
-          <div><strong>50K+</strong><small>road images processed</small></div>
-          <div><strong>20K+</strong><small>wells analyzed</small></div>
-          <div><strong>IEEE</strong><small>published research</small></div>
-        </div>
-      </aside>
+     <aside className="hero-card profile-card">
+  <div className="profile-photo-wrap">
+    <img
+      src="/profile-photo.jpeg"
+      alt="Praveen Kumar Gorrepati professional portrait"
+      className="profile-photo"
+    />
+  </div>
+
+  <span className="status-dot">Open to Fall Internships</span>
+
+  <h3>Target Roles</h3>
+  <div className="tag-list">
+    {profile.targetRoles.map((role) => <span key={role}>{role}</span>)}
+  </div>
+
+  <div className="focus-panel">
+    <p>Currently focused on</p>
+    <strong>Machine Learning • Asset Management Analytics • Data Engineering • AI Systems</strong>
+  </div>
+</aside>
     </section>
   );
 }
@@ -165,7 +173,7 @@ function ProjectDetail({ project }: { project: Project }) {
 function Projects() {
   return (
     <section id="projects" className="section">
-      <SectionTitle eyebrow="Projects" title="Selected technical projects" text="A focused view of projects across asset management analytics, computer vision, oil and gas analytics, machine learning, and full-stack development." />
+      <SectionTitle eyebrow="Projects" title="Technical projects" text="A focused view of projects across asset management analytics, computer vision, oil and gas analytics, machine learning, and full-stack development." />
       <div className="project-grid">{projects.map((project) => <ProjectCard project={project} key={project.slug} />)}</div>
     </section>
   );
@@ -173,15 +181,20 @@ function Projects() {
 
 function Skills() {
   return (
-    <section id="skills" className="section split-section">
-      <div>
-        <SectionTitle eyebrow="Skills" title="Technical toolkit" text="Grouped for quick scanning by recruiters and hiring managers." />
-      </div>
+    <section id="skills" className="section skills-section">
+      <SectionTitle
+        eyebrow="Skills"
+        title="Technical toolkit"
+        text="Grouped for quick scanning by recruiters and hiring managers."
+      />
+
       <div className="skills-grid">
         {skills.map((skill) => (
           <article className="skill-card" key={skill.group}>
             <h3>{skill.group}</h3>
-            <div className="tag-list compact">{skill.items.map((item) => <span key={item}>{item}</span>)}</div>
+            <div className="tag-list compact">
+              {skill.items.map((item) => <span key={item}>{item}</span>)}
+            </div>
           </article>
         ))}
       </div>
